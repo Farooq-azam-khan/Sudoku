@@ -25,17 +25,40 @@ class Sudoku:
         isFound = [ False for i in range(self.rows)]
         for val in range(self.rows):
             cell = self.game_board[row][val]
-            if isFound[cell] = True:
+            if isFound[cell]:
+                print("row: ", row, "is invalid")
                 return False
             else:
-                isFoun[cell] = True
-        return True
+                isFound[cell] = True
+
+        trueCount = 0
+        for c in isFound:
+            if c:
+                trueCount+=1
+        return trueCount == self.rows
 
     def checkCols(self):
-        pass
+        for col in range(self.cols):
+            if not self.checkOneCol(col):
+                return False
+        return True
 
-    def checkOneCol(self):
-        pass
+    def checkOneCol(self, col):
+        isFound = [False for i in range(self.cols)]
+        for val in range(self.cols):
+            cell = self.game_board[val][col]
+            if isFound[cell]:
+                print("col: ", col, "is invalid")
+                return False
+            else:
+                isFound[cell] = True
+
+        trueCount = 0
+        for c in isFound:
+            if c:
+                trueCount+=1
+        return trueCount == self.cols
+
     def checkSumSquares(self):
         pass
 
@@ -86,8 +109,12 @@ class Sudoku:
 
 def main():
     game = Sudoku()
-    if game.setValue(1, 0,0):
-        print(game)
+
+    for i in range(game.cols):
+        game.setValue(i+1, i,0)
+
+    print(game)
+    game.checkGame()
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,7 @@
 # SUDOKU
-- TODO:
-  -  implement game mechanics
-  - implement gui
-  - implement ai to play 
+
+## TODO:
+-  implement game mechanics
+  - generate random game
+- implement gui
+- implement ai to play
